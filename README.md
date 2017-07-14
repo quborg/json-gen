@@ -1,4 +1,4 @@
-# JSON Generator with User Interface
+# JSON Generator with User Interface [![CircleCI Status](https://circleci.com/gh/quborg/json-gen.svg?style=shield&circle-token=:circle-token)](https://circleci.com/gh/quborg/json-gen)
 
 ## Run the project
 Just open up `public/index.html` on your preferred web browser.
