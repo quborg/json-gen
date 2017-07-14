@@ -13,13 +13,18 @@ module.exports = {
     path: path.join(__dirname, 'public'),
     filename: 'bundle.js',
   },
-  devServer: { // use virtual directory space, do not confuse with real public/bundle.js compiled in production.
+  devServer: { // is using virtual directory space, do not confuse with real public/bundle.js compiled in production.
     hot: true,
     inline: true,
     host: '0.0.0.0',
     port: PORT,
     historyApiFallback: true,
     contentBase: path.resolve(__dirname, './public'),
+  },
+  resolve: {
+    alias: {
+      'jg-src': path.resolve('src'),
+    },
   },
   module: {
     rules: [

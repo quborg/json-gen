@@ -6,8 +6,11 @@ textarea {
   font-family: "Courier New", Courier, monospace;
   background-color: transparent;
   color: #606060;
-  min-height: 450px;
   resize: none;
   outline: none !important;
   box-shadow: none;
+}
+
+.h-450 {
+  height: 450px;
 }

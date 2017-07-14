@@ -1,15 +1,15 @@
-# JSON Generator 
+# JSON Generator with User Interface
 
 ## Run the project
 Just open up `public/index.html` on your preferred web browser.
 
-## Setup guide
+## To rebuild or development
 ### Prerequisites
-* Environment
+* Environment setup
     * [Yarn](https://yarnpkg.com/lang/en/docs/install/) (package manager)
     * Download the [source code](https://github.com/quborg/json-gen/archive/master.zip)
     * ! (To contribute) use [Git](https://git-scm.com/) 
-* Dependencies
+* Install Dependencies
     * Run command: `yarn` (equivalent to `npm install`)
 
 ### Rebuild a new fresh version
@@ -27,9 +27,12 @@ yarn run dev
 ## Source file structure
 Essentials files
 ```
-├── src
-    ├── provider.js  -   -   -   | Entry point.
-    ├── JsonGenerator.js -   -   | Main React component.
-    ├── fixtures.js  -   -   -   | Basic data shape.
+├── src/
+│   ├── assets/
+│   │   ├── fixtures.js  -   -   -   -   | Basic data shape.
+│   │   └── styles.css
+│   ├── containers/
+│   │   └── index.js -   -   -   -   -   | Main React container, exported as JsonGenerator.
+│   ├── provider.js  -   -   -   -   -   | Application Entry point.
     ..
 ```

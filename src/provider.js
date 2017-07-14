@@ -1,4 +1,6 @@
-import JsonGenerator from './JsonGenerator';
+import { JsonGenerator } from 'jg-src';
+
+import './assets/styles.css';
 
 ReactDOM.render(
   <JsonGenerator />,

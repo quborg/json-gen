@@ -1,6 +1,6 @@
 export const Credits = 'credits; open source community : react, webpack, babel, ecmascript, sails, w3c, stackoverflow ..';
 
-export const demoFixture = '\
+export const initialState = '\
 // here is a sample, you can start with it \n\
 date = 07/13/2017 \n\
 person \n\
@@ -11,6 +11,7 @@ person \n\
     email = john.doe@emails.com \n\
   card_type = master card \n\
 \n\
+// Example of Array \n\
 service[0] \n\
   product = rental car \n\
   brand = white Peugeot 207 \n\
