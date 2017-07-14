@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "NODE_ENV=development ./node_modules/.bin/webpack-dev-server",
+    "prod": "NODE_ENV=production ./node_modules/.bin/webpack -p"
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,25 @@
   "bugs": {
     "url": "https://github.com/quborg/json-gen/issues"
   },
-  "homepage": "https://github.com/quborg/json-gen#readme"
+  "homepage": "https://github.com/quborg/json-gen#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-runtime": "^6.23.0",
+    "css-loader": "^0.28.4",
+    "postcss-loader": "^2.0.6",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "style-loader": "^0.18.2",
+    "webpack": "^3.2.0",
+    "webpack-dev-server": "^2.5.1"
+  }
 }
