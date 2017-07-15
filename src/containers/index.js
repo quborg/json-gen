@@ -5,7 +5,7 @@ export default class JsonGenerator extends React.Component {
 
   state = {
     editor: Fixtures.initialState,
-    result: '{ }',
+    result: '',
   }
 
   componentWillMount() {
@@ -23,7 +23,7 @@ export default class JsonGenerator extends React.Component {
 
   generate = (editor=this.state.editor) => {
     let result = editor;
-    result = Helpers.TextCleaner(result);
+    result = Helpers.JG_converter(result);
     this.setState({ result })
   }
 
@@ -44,7 +44,7 @@ export default class JsonGenerator extends React.Component {
           <div className='w-100 pv3 ph4 bg-black-05 ml0 ml3-ns'>
             <header className='f3 light-blue b tc'>Result</header>
             <div className='mt3 pa2 bg-white blue f6 code courier h-450'>
-              <pre className='ma0'>{result}</pre>
+              <pre className='ma0'><code>{ result }</code></pre>
             </div>
           </div>
         </main>
