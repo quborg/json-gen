@@ -5,8 +5,13 @@ export const TextCleaner = (result) => {
     .split('\n')
     .map((line) => {
       !/^\/\//.test(line) &&
-      line !== '' &&
-      (queue += `${line} \n`)
+      line !== '' && (
+        (
+          (line.indexOf('//') !== -1) &&
+          (line = line.split('//')[0])
+        ),
+        (queue += `${line} \n`)
+      )
     })
   ;
   return queue;

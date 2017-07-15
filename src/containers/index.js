@@ -12,18 +12,19 @@ export default class JsonGenerator extends React.Component {
     this.generate()
   }
 
-  textareaHandler = ({target}) => {
-    this.setState(
-      { editor: target.value },
-      this.generate()
-    );
+  componentWillUpdate(nextProps, nextState) {
+    (this.state.editor !== nextState.editor) &&
+    this.generate(nextState.editor)
   }
 
-  generate = () => {
-    let result = this.state.editor;
+  textareaHandler = ({target}) => {
+    this.setState({ editor: target.value })
+  }
+
+  generate = (editor=this.state.editor) => {
+    let result = editor;
     result = Helpers.TextCleaner(result);
-    console.log('result :', result);
-    this.setState({ result });
+    this.setState({ result })
   }
 
   render() {
@@ -36,7 +37,7 @@ export default class JsonGenerator extends React.Component {
             <header className='f3 light-pink b tc'>Editor</header>
             <textarea
               className='mt3 pa2 bg-white w-100 h-450 f5 b br2 bw-1 b--dotted ma0 pa0 overflow-auto'
-              value={editor}
+              defaultValue={editor}
               onChange={this.textareaHandler}
             />
           </div>

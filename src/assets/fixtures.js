@@ -16,7 +16,7 @@ service[0] \n\
   product = rental car \n\
   brand = white Peugeot 207 \n\
   period = 3 days \n\
-  payed = true \n\
+  payed = true // boolean \n\
 service[1] \n\
   product = beach tent \n\
   period = 3 days \n\
