@@ -1,3 +1,5 @@
 export JsonGenerator from 'jg-src/containers';
-export * as Fixtures from 'jg-src/assets/fixtures';
-export * as Helpers from 'jg-src/helpers';
+export {  Sample,
+          Editor,
+          Generic  } from 'jg-src/components';
+export * as Partials from 'jg-src/assets/partials';
