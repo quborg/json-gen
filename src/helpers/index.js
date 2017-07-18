@@ -1,11 +1,11 @@
 /* Clean Textarea value from empty lines and comments
  * Return an {Array} of {String} lines
  *
- * @result {String} textarea value
+ * @editor {String} textarea value
  */
-export const TextCleaner = (result) => {
+export const TextCleaner = (editor) => {
   let queue = [];
-  result
+  editor
     .replace(/\r\n/g, '\n')
     .split('\n')
     .map(line => {
@@ -17,25 +17,71 @@ export const TextCleaner = (result) => {
   return queue;
 }
 
+/*
+ * Check LocalStorage Support
+ */
+export const testLS = () => {
+  try {
+    localStorage.setItem(test, test);
+    localStorage.removeItem(test);
+    return true;
+  } catch(e) {
+    return false;
+  }
+}
+
 /* Convert an {Array} of "=" based pair (key = value) to JSON String '{"key":"value"}'
  *
  * @array {Array} of OneOf [key, (key=value)}
  */
-export const JsonString_Builder = (array) => {
+export const StringJson_Builder = (array) => {
   const step     = '  '
-      , onOfpair = line => `"${line.trim().replace(' ','_')}"`
-  ;
-  let tree = step
-    , string = '{\n'
+      , quoting  = line => `"${line.trim().replace(' ','_')}"`
+      , plusStep = tree => tree + step
+      , flipCut  = (str, n=2) => str.substring(0, str.length - n)
+      , getTree  = line => line.match(/^\s*/)[0].length
   ;
 
+  let T
+    , root    = ''
+    , tree    = step
+    , string  = '{\n'
+    , child   = false
+    , mono    = false
+  ;
+
+  function lineFormat() {
+    mono && child && (
+      string += ' {\n',
+      mono = false
+    );
+    T.length === 1 ?
+      (
+        string += `${tree}${quoting(T[0])}:`,
+        mono = true
+      )
+    :
+      (
+        string += `${tree}${quoting(T[0])}: ${quoting(T[1])},\n`
+      )
+    ;
+  }
+
   array.map(line => {
-    const T = line.split('=');
-    if (T.length===1)
-      (string += `${tree}${onOfpair(T[0])}: {\n`),
-      (tree += step)
-    else
-      string += `${tree}${onOfpair(T[0])}: ${onOfpair(T[1])},\n`
+    T = line.split('=');
+    child = getTree(line) > flipCut(tree).length;
+    child && (tree = plusStep(tree));
+    lineFormat();
+    mono && (
+      child ?
+        string += `\n${tree}${quoting(T[0])}:,\n`
+      :
+        (
+          tree = flipCut(tree),
+          string += ' "",\n'
+        )
+    );
+
   })
   string += '}';
   return string;
@@ -43,6 +89,6 @@ export const JsonString_Builder = (array) => {
 
 /* Convert J-G Human simple syntax to a generic JSON
  *
- * @result {String} textarea value
+ * @editor {String} textarea value
  */
-export const JG_converter = result => JsonString_Builder( TextCleaner(result) )
+export const JG_converter = editor => StringJson_Builder( TextCleaner(editor) )

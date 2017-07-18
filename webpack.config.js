@@ -4,6 +4,7 @@ const webpack = require('webpack');
 const PORT = process.env.PORT || 8000;
 
 module.exports = {
+  devtool: process.env.NODE_ENV === 'production' ? 'source-map' : 'inline-source-map',
   context: path.resolve(__dirname, './src'),
   entry: [
     'react-hot-loader/patch',
@@ -29,7 +30,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
+        test: /\.scss$/,
         use: [
           'style-loader',
           'css-loader',
@@ -39,6 +40,7 @@ module.exports = {
               plugins: () => [ require('autoprefixer') ]
             }
           },
+          'sass-loader',
         ],
       },
       {
@@ -51,9 +53,13 @@ module.exports = {
               ['env', {'modules': false}],
               ['es2015', {'modules': false}],
               'stage-0',
-              'react'
+              'react',
             ],
-            plugins: ['transform-runtime'],
+            plugins: [
+              'transform-runtime',
+              'transform-class-properties',
+              'transform-object-rest-spread',
+            ],
           },
         }],
       },
@@ -61,5 +67,12 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new webpack.ProvidePlugin({
+      React: "react",
+      ReactDOM: "react-dom",
+      PropTypes: 'prop-types',
+      Helpers: 'jg-src/helpers',
+      Fixtures: 'jg-src/assets/fixtures',
+    }),
   ]
 };

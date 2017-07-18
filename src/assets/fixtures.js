@@ -12,12 +12,12 @@ person \n\
   card type = master card \n\
 \n\
 // Example of Array \n\
-service[0] \n\
+service[0] // an array must start with word[0]  \n\
   product = rental car \n\
   brand = Peugeot 207 \n\
   period = 3 days \n\
-  payed = true // boolean \n\
-service[1] \n\
+  payed = true // boolean \n\n\
+service[1] // [0,1,2,3..] and so forth \n\
   product = beach tent \n\
   period = 3 days \n\
   payed = true \n\

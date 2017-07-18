@@ -1,0 +1,68 @@
+$pink: #ffa3d7;
+$blue: #96ccff;
+$glass: #FCFCFC;
+
+body {
+  font-family: "Courier New", courier, monospace;
+}
+
+textarea {
+  width: 100%;
+  height: 450px;
+  resize: none;
+  outline: none !important;
+  box-shadow: none;
+}
+
+textarea[data-editor] {
+  background: {
+    color: white;
+    image: linear-gradient(90deg, transparent 44px, $pink 46px, $pink 47px, transparent 47px),
+           linear-gradient(#F9F9F9 .1em, transparent .1em);
+    size: 100% 1.2em;
+  }
+}
+
+textarea[data-result] {
+  background: {
+    color: $glass;
+    image: linear-gradient(90deg, transparent 0, $blue 3px, $blue 4px, transparent 4px);
+  }
+}
+
+textarea[data-sample] {
+  width: 400px;
+  font-size: 14px;
+  background: white;
+  padding: 10px;
+}
+
+[id="show"] {
+  background-color: rgba(0, 0, 0, .33);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 73px;
+  left: 0;
+  bottom: 0;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: baseline;
+  padding-top: 57px;
+  &.false { display: none; }
+  &.true  { display: flex; }
+}
+[id="close"] {
+  display: block;
+  width: 0;
+  cursor: pointer;
+  color: red;
+  position: relative;
+  top: -22px;
+}
+[id="btn"] {
+  position: relative;
+  top: -4px;
+}
+
+.hover-b--white:hover { border-color: white; }

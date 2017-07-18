@@ -1,6 +1,7 @@
 import { JsonGenerator } from 'jg-src';
 
-import './assets/styles.css';
+import 'tachyons-sass/tachyons.scss';
+import './assets/styles.scss';
 
 ReactDOM.render(
   <JsonGenerator />,
