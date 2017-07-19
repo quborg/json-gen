@@ -6,11 +6,15 @@ export default class JsonGenerator extends React.Component {
   state = {
     editor: Fixtures.initialState,
     result: '{}',
+    browserUpgrade: true
   }
 
   componentWillMount() {
-    Helpers.testLS() && localStorage.getItem('editor') &&
+    Helpers.testLS() ?
+      localStorage.getItem('editor') &&
       this.setState({ editor:localStorage.getItem('editor') })
+    : this.setState({ browserUpgrade: true })
+    ;
     this.generate()
   }
 
@@ -20,7 +24,8 @@ export default class JsonGenerator extends React.Component {
   }
 
   textareaHandler = ({value}) => {
-    this.setState({ editor: value })
+    this.setState({ editor: value });
+    Helpers.testLS() && localStorage.setItem('editor', value)
   }
 
   generate = (editor=this.state.editor) => {
@@ -29,12 +34,13 @@ export default class JsonGenerator extends React.Component {
   }
 
   render() {
-    const { editor, result } = this.state;
-    const { Header, Main, Footer }  = Partials;
+    const { editor, result, browserUpgrade } = this.state;
+    const { Header, Main, Footer }           = Partials;
 
     return (
       <div className='cf'>
         <Header />
+        { browserUpgrade && <Fixtures.BrowserUpgrade close={() => this.setState({browserUpgrade: false})} /> }
         <Main>
           <Editor editor={editor} onChange={this.textareaHandler} />
           <Generic result={result} />

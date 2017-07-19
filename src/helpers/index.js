@@ -22,8 +22,8 @@ export const TextCleaner = (editor) => {
  */
 export const testLS = () => {
   try {
-    localStorage.setItem(test, test);
-    localStorage.removeItem(test);
+    localStorage.setItem('test', 'test');
+    localStorage.removeItem('test');
     return true;
   } catch(e) {
     return false;
