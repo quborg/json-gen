@@ -60,6 +60,23 @@ textarea[data-sample] {
   position: relative;
   top: -22px;
 }
+[id="close-bu"] {
+  cursor: pointer;
+  color: red;
+  position: relative;
+  top: 2px;
+  margin-left: 20px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  padding: 3px;
+  line-height: 14px;
+  border: {
+    style: solid;
+    radius: 10px;
+    width: 1px;
+  }
+}
 [id="btn"] {
   position: relative;
   top: -4px;

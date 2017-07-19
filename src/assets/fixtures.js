@@ -1,5 +1,11 @@
 export const Credits = 'credits; open source community : react, webpack, babel, ecmascript, sails, w3c, stackoverflow ..';
 
+export const BrowserUpgrade = ({close}) => <p className="tc w-100 ph5">
+  You are using an <strong>outdated</strong> browser.
+  Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.
+  <span id="close-bu" role='button' onClick={() => close()}>&#10006;</span>
+</p>;
+
 export const initialState = '\
 // here is a sample, you can start with it \n\n\
 date = 07/13/2017 \n\
